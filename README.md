@@ -7,7 +7,7 @@
 * [WEBPACK](/books/webpack/WEBPACK.md)
     * [webpack 配置](/books/webpack/WEBPACK_CONF.md)
     * [webpack Q&A](/books/webpack/WEBPACK_QUESTION.md)
-* [ALGORITHM](/books/algorithm/ALGORITHM.md)
+* [ALGORITHM](/books/algorithm/README.md)
     * [dp](/books/algorithm/dp/index.md)
     * [贪心](/books/algorithm/贪心/index.md)
     * [二分](/books/algorithm/二分/index.md)
