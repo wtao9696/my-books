@@ -42,8 +42,8 @@ arr.splice(1, 0, 3) // [1, 3, 2]
 const arr = [1, 2]
 arr.splice(1, 0, 3, 4) // [1, 3, 4, 2]
 ```
-<!-- ![](/books/assets/splice.png) -->
-<img src="../assets/splice.png" style="width: 300px;"/>
+![](/books/assets/splice.png)
+<!-- <img src="../assets/splice.png" style="width: 300px;"/> -->
 
 ---
 ### 2. 堆栈
