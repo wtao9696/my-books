@@ -17,4 +17,6 @@
 
 * [JavaScript](/books/js/README.md)
 
+* [设计模式](/books/designPatterns/README.md)
+
 
