@@ -30,8 +30,8 @@
 
 ### 抽象工厂模式
 **抽象工厂的四个关键角色**
-- **抽象工厂（抽象类，它不能用于生成具体实例）：**用于声明最终目标产品的共性。
-- **具体工厂（用于生成产品族里的一个具体的产品）：**继承自抽象工厂，实现了抽象工厂里声明的那些方法，用于创建具体的产品的类
+- **抽象工厂（抽象类，它不能用于生成具体实例）**用于声明最终目标产品的共性。
+- **具体工厂（用于生成产品族里的一个具体的产品）**继承自抽象工厂，实现了抽象工厂里声明的那些方法，用于创建具体的产品的类
 - **抽象产品（抽象类，它不能用于生成具体实例）**
 - **具体产品（用于生产产品族里的一个具体的产品所依赖的更细粒度的产品）**
 
@@ -91,9 +91,70 @@ class FakeStarFactory extends MobilePhoneFactory {
 
 ```
 抽象产品---硬件系统
+```js
+    class HardWare {
+        operateByOrder() {
+            console.log('抽象产品方法不能直接调用')
+        }
+    }
+
+    // 定义具体硬件的具体产品类
+    class QualcommHardWare extends HardWare {
+        operateByOrder (){
+            console.log('以高通处理器的方式运转');
+        }
+    }
+
+    class MiWare extends HardWare {
+        operateByOrder() {
+            console.log('以小米的方式运转');
+        }
+    }
+```
+4. 具体产品
+```js
+const myPhone = new FakeStarFactory();
+// 配置操作系统
+const myOs = myPhone.createOS();
+// 安装硬件
+const myHardWare = myPhone.createHardWare();
+// 启动操作系统
+myOs.controlHardWare()
+// 唤醒硬件
+myHardWare.operateByOrder()
+```
 
 ## 单例模式
+**思想**
+不管创建多少次，永远只会返回第一次创建那个唯一的一个实例
 
+1. 实现单例的方式---静态方法版
+```js
+class SingleDog {
+    static getInstance () {
+        if (!SingleDog.instance) {
+            SingleDog.instance = new SingleDog();
+        }
+        return SingleDog.instance
+    }
+}
+
+const s1 = SingleDog.getInstance();
+const s2 = SingleDog.getInstance();
+s1 === s2 // true
+```
+2. 实现单例的方式---闭包的方式
+```js
+SingleDog.getInstance = (() => {
+    let instance = null;
+    return () => {
+        if(!instance) {
+            instance = new SingleDog()
+        }
+        return instance;
+    }
+})()
+```
 ## 原型模式
 
 ## 装饰器模式
