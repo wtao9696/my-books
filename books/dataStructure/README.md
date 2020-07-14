@@ -106,11 +106,66 @@ arr.pop() // [1, 2]
 #### 4.2 双向链表
 
 ### 5. 树
+#### 二叉树的遍历
+- 先序遍历（根，左，右）
+- 中序遍历（左，根，右）
+- 后序遍历（左，右，根）
+- 层次遍历
+
+按照实现方式的不同，遍历方式分为以下两种
+- 递归遍历（先，中，后序遍历）
+- 迭代遍历（层次遍历）
+**构造二叉树**
+```js
+function TreeNode(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+}
+```
+生成二叉树
+
+```
+const node = new TreeNode(1)
+```
+
+
+**先序遍历**
+```js
+function preOrder(root) {
+    if (!root) return;
+
+    // 输出当前结点
+    console.log('当前遍历的结点是：', root.val);
+    preOrder(root.left);
+    preOrder(root.right);
+}
+```
+
+**中序遍历**
+```js
+function midOrder(root) {
+    if (!root) return;
+
+    midOrder(root.left);
+    console.log(root.val);
+    midOrder(root.right);
+}
+```
+
+**后序遍历**
+```js
+function postOrder(root) {
+    if (!root) return;
+    postOrder(root.left);
+    postOrder(root.right);
+    console.log(root.val);
+}
+```
 
 ### 6. 图
 
 ### 7. 字典树
-
 ### 8. 散列树
 
 
