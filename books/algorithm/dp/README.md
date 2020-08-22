@@ -7,7 +7,7 @@
 -->
 
 # dp 动态规划
-> 找规律，类似于高中数列
+> 找规律（状态转移方程）
 ## 1. 爬楼梯
 > 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢
 
@@ -49,12 +49,34 @@ const climbs = (n) => {
 
 <details>
 <summary>解题思路</summary>
-
+ 1. core  dp[i] = Math.min(dp[i], dp[i - coin] + 1);
 
 </details>
 
 ```js
+// 
+const coinMin = (coins, amount) => {
+    let dp = new Arrary(amount + 1).fill(Infinity);
+    dp[0] = 0;
+    for (let i = 1, len = dp.length; i < len; i++) {
+        for (coin of coins) {
+            i - coin >= 0 && (dp[i] = Math.min(dp[i], dp[i-1]+1));
+        }
+    }
+    return dp[amount] === Infinity ? - 1 : dp[amount];
+}
 
+// 以coin作为基准
+const coinMin = (coins, amount) => {
+    let dp = new Arrary(amount + 1).fill(Infinity);
+    dp[0] = 0;
+    for (coin of coins) {
+        for (let i = coin; i < amount; i++) {
+            dp[i] = Math.min(dp[i], dp[i-coin] + 1);
+        }
+    }
+    return dp[amount] === Infinity ? -1  : dp[amount];
+}
 ```
 
 ## 4. 不同路径
