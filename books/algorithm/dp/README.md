@@ -88,7 +88,7 @@ const coinMin = (coins, amount) => {
     dp[0] = 0;
     for (let i = 1, len = dp.length; i < len; i++) {
         for (coin of coins) {
-            i - coin >= 0 && (dp[i] = Math.min(dp[i], dp[i-1]+1));
+            i - coin >= 0 && (dp[i] = Math.min(dp[i], dp[i-coin]+1));
         }
     }
     return dp[amount] === Infinity ? - 1 : dp[amount];
