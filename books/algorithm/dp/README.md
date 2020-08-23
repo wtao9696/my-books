@@ -54,17 +54,35 @@ const climbs = (n) => {
 }
 ```
 
-## 2. 最大正方形
+## 2. [最大正方形](https://leetcode-cn.com/problems/maximal-square/)
 > 在一个由 0 和 1 组成的二维矩阵内，找到只包含 1 的最大正方形，并返回其面积
 
 <details>
 <summary>解题思路</summary>
-
+1. 找出最大正方形 => 找出最大边长
+2. dp[i][j] 已（i, j）为又顶点，所能形成的最大边长。
+3. maxLengt保存最大的边长
 
 </details>
 
 ```js
-
+var maximalSquare = function(matrix) {
+    if (!matrix || !matrix[0]) return 0
+    let l1 = matrix.length;
+    let l2 = matrix[0].length;
+    let dp = Array.from(new Array(l1), () => new Array(l2).fill(0));
+    let maxStep = 0;
+    for (let i = 0; i< l1; i++) {
+        for (let j = 0; j < l2; j++) {
+            if (matrix[i][j] === '0') continue;
+            if (i === 0 || j == 0) {dp[i][j] = 1;}
+            else { dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1 }
+            maxStep = Math.max(maxStep, dp[i][j]);
+        }
+    }
+    // console.log(dp)
+    return maxStep *  maxStep;
+};
 ```
 
 ## 3. [零钱兑换](https://leetcode-cn.com/problems/coin-change/)
@@ -107,7 +125,7 @@ const coinMin = (coins, amount) => {
 }
 ```
 
-## 4. 不同路径
+## 4. [不同路径](https://leetcode-cn.com/problems/unique-paths/)
 > 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。问总共有多少条不同的路径
 
 <details>
@@ -117,7 +135,27 @@ const coinMin = (coins, amount) => {
 </details>
 
 ```js
-
+const uniquePaths = function(m, n) {
+    // 动态规划
+    // 时间复杂度 O(n^2)
+    // 空间复杂度 O(n^2)
+    let dp = Array.from(new Arrary(m), () => new Arrary(n).fill(0))
+    // 第一列的走法只有一种
+    for (let i = 0; i < m; i++){
+        dp[i][0] = 1;
+    }
+    // 第一行的走法只有一种
+    for (let j = 0; j < n; j++){
+        dp[0][j] = 1;
+    }
+    for (let i = 1; i < m; i++){
+        for (let j = 1; j < n; j++){
+            // 当前位置是从左边或上边走过来的
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+        }
+    }
+    return dp[m - 1][n - 1];
+};
 ```
 
 
@@ -146,5 +184,5 @@ const longestPalindrome = (str) => {
 }
 ```
 
-
+## 
 
