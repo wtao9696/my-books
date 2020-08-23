@@ -169,4 +169,6 @@ SingleDog.getInstance = (() => {
 
 ## 观察者模式
 
+[观察者模式](./observer.md)
+
 ## 迭代器模式
