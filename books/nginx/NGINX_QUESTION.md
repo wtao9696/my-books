@@ -14,5 +14,6 @@
     - *如果上面的方式没有解决，可以采取以下措施*
     - `rm -rf /usr/local/var/run/nginx/*`
     - `brew uninstall nginx`
-    - `brew install nginx`·
+    - `brew install nginx`
     - `brew services start nginx`
+
